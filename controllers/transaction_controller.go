@@ -8,6 +8,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+// get transaction details by isbn, std_id
 func GetTransactionLogByIsbnAndStdID(c *gin.Context) {
 	isbn := c.Query("isbn")
 	std_id := c.Query("std_id")
@@ -31,6 +32,8 @@ func GetTransactionLogByIsbnAndStdID(c *gin.Context) {
 		c.JSON(200, result)
 	}
 }
+
+// allocate book by keeping checks
 func AllocateBook(c *gin.Context) {
 	var txn models.TransactionLogs
 	if err := c.BindJSON(&txn); err != nil {
@@ -66,6 +69,7 @@ func AllocateBook(c *gin.Context) {
 
 }
 
+// de-alloacate book
 func DeAllocateBook(c *gin.Context) {
 	var txn models.TransactionLogs
 	if err := c.BindJSON(&txn); err != nil {
