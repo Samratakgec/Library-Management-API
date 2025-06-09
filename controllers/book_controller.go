@@ -8,6 +8,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+// adding a book controller with the help of request body
 func AddBook(c *gin.Context) {
 	var book models.Book
 
@@ -35,6 +36,7 @@ func AddBook(c *gin.Context) {
 	c.JSON(200, gin.H{"success": "book added successfully"})
 }
 
+// get book by isbn using query-parameter
 func GetBookByIsbn(c *gin.Context) {
 	isbn := c.Param("isbn")
 	if isbn == "" {
@@ -49,6 +51,7 @@ func GetBookByIsbn(c *gin.Context) {
 	c.JSON(200, gin.H{"book": book})
 }
 
+// delete book by isbn using query-parameter
 func DeleteBookByIsbn(c *gin.Context) {
 	isbn := c.Param("isbn")
 	if isbn == "" {
